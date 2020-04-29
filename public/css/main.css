@@ -1,0 +1,550 @@
+body {
+    margin: 0;
+    /* background-image: url("../images/Background.png"); */
+    background-color: white;
+    font-family: "Nunito", sans-serif;
+    font-size: 10px;
+  }
+
+  .start {
+    margin: 0;
+    background-image: url("../images/Background.png");
+    font-family: "Nunito", sans-serif;
+    font-size: 10px;
+    height: 100%;
+  }
+
+  #start {
+    min-height: 100%;
+    position: relative;
+  }
+
+  .headpart {
+    height: 10%;
+    width: 100%;
+    top: 0px;
+  }
+
+  .bodypart {
+    height: 80%;
+    top: 10%;
+    margin-top: 10px;
+    overflow: auto;
+    margin-bottom: 15%;
+  }
+
+  #footer {
+    position: fixed;
+    width: 100%;
+    bottom: 0px;
+    background-color: #009900;
+    height: 8%;
+  }
+
+  .indexMain {
+    width: 100%;
+    position: relative;
+  }
+
+  .indexUpper {
+    position: fixed;
+    width: 100%;
+    top: 0px;
+    height: 72%;
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover;
+    background-image: url("../images/Lady.png");
+  }
+
+  .bgHeader {
+    position: fixed;
+    width: 100%;
+    top: 0px;
+    height: 20%;
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover;
+    background-image: url("../images/Picture.png");
+  }
+
+  .bgHeader2 {
+    position: fixed;
+    width: 100%;
+    top: 0px;
+    height: 20%;
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover;
+    background-image: url("../images/confirmbg.png");
+  }
+
+  .cusBody {
+    height: 77%;
+    width: 100%;
+    top: 15%;
+    overflow: auto;
+    margin-bottom: 25%;
+    position: fixed;
+  }
+
+  .indexLower {
+    position: fixed;
+    top: 65%;
+    width: 100%;
+    height: 35%;
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover;
+    background-image: url("../images/bdown.png");
+  }
+
+  .logoimage {
+    /* position: fixed; */
+    display: block;
+    padding-top: 55px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .logoimagebranch {
+    display: block;
+    padding: 70px 0;
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .butimg {
+    display: block;
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 2px;
+  }
+
+  .brancheslist {
+    width: 80%;
+    font-family: "Nunito", sans-serif;
+    font-size: 15px;
+    padding:10px;
+    text-align: center;
+    border-style: solid;
+    border-color: #80ff80;
+    border-width: 6px;
+    margin: 5px auto;
+    /* margin-left: auto;
+    margin-right: auto; */
+    color: black;
+  }
+
+  .locationList {
+    padding:35px;
+  }
+
+  .locationInquiry {
+    font-weight: 700;
+    text-align: center;
+    font-size: 12px;
+  }
+
+  .email {
+    color: #00cc00;
+  }
+
+  .footimg {
+    display: block;
+    width: 65px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 15px;
+  }
+
+  .prodTitle {
+    margin:30px 0 0 0;
+    color: #009900;
+    font-size: 20px;
+    float: left;
+  }
+
+  .prodTitle2 {
+    color: #009900;
+    font-size: 16px;
+    font-weight: 900;
+    text-align: left;
+    margin: 10px 0 0 15px;
+  }
+
+  .mainProdTitle {
+    margin:5px 0;
+    color: #006600;
+    font-size: 30px;
+    font-weight: 700;
+    text-align: left;
+  }
+
+  .deliver {
+    color: #eb8334;
+  }
+
+  .cartlogo {
+    padding:15px 1px 0 1px;
+    font-size: 22px;
+    color: #ff8000;
+    float: right;
+  }
+
+  .hrline {
+    border: 1px solid grey;
+  }
+
+  .hrline5 {
+    border: 1px solid grey;
+    width: 100%;
+    margin: 0px;
+  }
+
+  .hrline3 {
+    border: 1px solid white;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hrline2 {
+    border: 2px solid #006600;
+  }
+
+  .cartCont {
+    padding: 0 15px;
+    width: 100;
+  }
+
+  .hbprods {
+    padding:20px 0;
+  }
+
+  .specbut {
+    width: 100%;
+    margin: 0;
+  }
+
+  .eachprod {
+    width: 50%;
+    padding: 13px 5px;
+    float: left;
+  }
+
+  .prodItem {
+    border-style: solid;
+    border-color: #009900;
+    border-width: 2px;
+  }
+
+  .mainProdBody {
+    padding:15px;
+  }
+
+  .itemImg {
+    max-width: 100%;
+  }
+
+  .itemInfo {
+    padding:10px;
+    background-color: white;
+    position: relative;
+    height: 150px;
+  }
+
+  .itemSize {
+    color: #009900;
+    font-weight: 500;
+    font-size: 15px;
+  }
+
+  .itemPrice {
+    color: #009900;
+    font-weight: 400;
+    font-size: 18px;
+    margin: 0 5px;
+  }
+
+  .itemDesc {
+    font-size: 16px;
+  }
+
+  .prizeRow {
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
+    height: 40px;
+  }
+
+  .addToCart {
+    color: #eb8334;
+    font-size: 25px;
+    margin: 0 5px;
+  }
+
+  .totProd {
+    font-size: 17px;
+    font-weight: 400;
+  }
+
+  .cartlogo2 {
+    margin:20px 0 0 0;
+    font-size: 13px;
+  }
+
+  .delProd {
+    color: #ff8000;
+    font-size: 20px;
+    font-weight: 400;
+    text-align: center;
+    margin-left: 15px;
+  }
+
+  .cartSize {
+    font-size: 16px;
+  }
+
+  .delProd2 {
+    color: #ff1a1a;
+    font-size: 50px;
+    padding: 0 2px;
+    font-weight: 800;
+  }
+
+  .subProd {
+    color: #ff8000;
+    font-size: 20px;
+    font-weight: 1000;
+  }
+
+  .addProd {
+    color: #ff8000;
+    font-size: 20px;
+    font-weight: 1000;
+  }
+
+  .totCostVal {
+    color: #009900;
+    text-align: right;
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  .totCostVal2 {
+    color: #009900;
+    text-align: left;
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  .cartBrandLogo {
+    display: block;
+    padding: 5px 0 22px 0;
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+
+  .delInfo {
+    font-size: 18px;
+    font-weight: 650;
+    color: #009900;
+    text-align: center;
+  }
+
+  .prodInCart {
+    padding:5px 0;
+  }
+
+  .cont {
+    background-color: #e6ffe6;
+    border-radius: 8px;
+  }
+
+  .itemCount {
+    text-align: right;
+    margin-right: 15px;
+  }
+
+  .delbut {
+    font-size: 20px;
+  }
+
+  .eachUnit {
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  .deldiv {
+    padding-bottom: 2px;
+  }
+
+  .deldiv2 {
+    text-align: right;
+  }
+  
+  .totpart {
+    width: 100%;
+    background-color: #e6ffe6;
+    padding: 15px 20px;
+    /* margin-bottom: 25%; */
+  }
+
+  .amount {
+    float: right;
+    color: #009900;
+    font-weight: 600;
+    font-size: 20px;
+  }
+
+  .tottitle {
+    font-weight: 400;
+    font-size: 20px;
+    color: black;
+  }
+
+  .shipinf {
+    color: grey;
+    font-size: 13px;
+    font-weight: 400;
+  }
+
+  .butsize {
+    width: 100%;
+    margin: 5px 0;
+  }
+
+  .cusLogo {
+    width: 55%;
+    margin-left: 20px;
+    display: block;
+  }
+
+  .cusForm {
+    padding:20px 40px;
+  }
+
+  input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 9px solid #90EE90;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  .probb {
+    float: right;
+    margin: 15px;
+  }
+
+  .deltit {
+    font-size: 15px;
+    font-weight: 500;
+    color: #006600;
+  }
+
+  .loclogo {
+    font-size: 35px;
+    font-weight: 700;
+    color: #ff8000;
+  }
+
+  .cussub {
+    float: right;
+    margin: 15px;
+  }
+
+  .recpur {
+    color: #ff8000;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .conprice {
+    float: right;
+    font-weight: 600;
+    font-size: 13px;
+  }
+
+  .conprice2 {
+    float: right;
+    font-weight: 600;
+    font-size: 13px;
+    color: #ff8000;
+  }
+
+  .coninf {
+    font-size: 15px;
+    text-transform: uppercase;
+  }
+
+  .conname {
+    font-size: 17px;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+
+  .conprod {
+    text-transform: capitalize;
+    color: #009900;
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .prodqp {
+    font-weight: 600;
+    font-size: 13px;
+  }
+
+  .prodqp2 {
+    font-weight: 600;
+    font-size: 13px;
+    color: #009900;
+  }
+
+  .conprodall {
+    margin: 0 0 3px 0;
+  }
+
+  .conbut {
+    float: right;
+    margin: 20px 0;
+  }
+
+  .branchcap {
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .imgdiv {
+    padding: 0;
+    float: left;
+    width: 50%;
+  }
+
+  .imgdiv2 {
+    padding: 0;
+    float: right;
+    width: 50%;
+  }
+
+  .prodbg {
+    background-color: white;
+    height: 100%;
+  }
+
+  .carttitdiv {
+    width: 100%;
+  }
+
+  .itemspad {
+    padding: 10px 0 0 0;
+  }

@@ -23,7 +23,11 @@ Route::get('/products', 'FEProductsController@index');
 Route::get('/specials', 'FEProductsController@specials');
 Route::get('/cart', 'FEProductsController@cart');
 Route::get('/customer', 'TransactionsController@customer');
-Route::get('/starttransaction', 'TransactionsController@start');
+Route::post('/transact', 'TransactionsController@start');
+Route::get('/confirm', 'TransactionsController@confirm');
+
+Route::post('/pay', 'PaymentController@redirectToGateway')->name('pay');
+Route::get('/payment/callback', 'PaymentController@handleGatewayCallback');
 
 Auth::routes();
 

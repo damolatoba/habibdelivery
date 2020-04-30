@@ -50,6 +50,7 @@
     </div>
     <script>
         var cart = [];
+        console.log(JSON.parse(localStorage.getItem('SelectedBranch')));
         const filledCart = JSON.parse(localStorage.getItem('filledCart'));
             if(filledCart != null){
                 cart = filledCart;

@@ -6,8 +6,8 @@
                 @if (count($branches)>0)
                     <div>
                 @foreach ($branches as $b)
-                        <div class="brancheslist">
-                            <span class="branchcap" data-id='{{$b->id}}' data-name='{{$b->branch_name}}'>{{$b->branch_name}}</span>
+                        <div class="brancheslist" data-id='{{$b->id}}' data-name='{{$b->branch_name}}'>
+                            <span class="branchcap">{{$b->branch_name}}</span>
                         </div>
                 @endforeach
                     </div>
@@ -23,14 +23,13 @@
         </div>  
     </div>
     <script>
-        $(document).ready(function(){
             $(".brancheslist").on("click", function(){
                 var dataId = $(this).attr("data-id");
                 var dataName = $(this).attr("data-name");
                 var SelectedBranch = {id:dataId, name:dataName};
                 localStorage.setItem("SelectedBranch", JSON.stringify(SelectedBranch));
                 window.location.replace("/products");
+                // console.log()
             });
-        });
     </script>
 @endsection

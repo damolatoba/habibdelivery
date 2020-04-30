@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use DB;
 use App\Transactions;
-use App\Product;
+use App\Purchased;
 use Illuminate\Http\Request;
 use Jenssegers\Agent\Agent;
 
@@ -36,11 +36,80 @@ class TransactionsController extends Controller
     public function start(Request $request)
     {
         //
-        $products = DB::table('products')->where('is_deleted', 0)->orderBy('product_name', 'asc');
-        // $product_name = $request->input('name'),
-        // 'branch' => $request->input('branch'),
-        // 'cart' => $request->input('cart'),
-        // dd($products);
+        $agent = new Agent();
+        $products = DB::table('products')->get();
+        $prodarray = [];
+        foreach($products as $p){
+            array_push($prodarray, array(
+                'id' => $p->id,
+                'name' => $p->product_name,
+                'desc' => $p->description,
+                'prize' => $p->product_prize,
+            ));
+        }
+        $name = $request->input('name');
+        $mobile = $request->input('mobile');
+        $address = $request->input('address');
+        $branchinfo = json_decode($request->input('branch'), true);
+        $branch = $branchinfo['id'];
+        $branchname = $branchinfo['name'];
+        $cart = json_decode($request->input('cart'), true);
+
+        $createTransaction = Transactions::create([
+            'customer_name' => $name,
+            'customer_mobile' => $mobile,
+            'customer_address' => $address,
+            'branch_id' => $branch,
+            'total_cost' => 0,
+            'payment_status' => 0,
+            
+        ]);
+        
+        $transactionId = $createTransaction->id;
+
+        // dd($insertedId);
+
+        $cartArray = [];
+        $duePayment = 0;
+        foreach($cart as $c){
+            $itemId = $c['id'];
+            // $transactionId = $transactionId;
+            $key = array_search($itemId, array_column($prodarray, 'id'));
+            $duePayment += $prodarray[$key]['prize'] * $c['units'];
+            array_push($cartArray, array(
+                'transaction_id' => $transactionId,
+                'product_id' => $c['id'],
+                'product_name' => $c['name'],
+                'single_cost' => $prodarray[$key]['prize'],
+                'quantity' => $c['units'],
+                'total_cost' => $prodarray[$key]['prize'] * $c['units'],
+                'created_at' => DB::raw('now()'),
+                'updated_at' => DB::raw('now()'),
+            ));
+        }
+        $customer = array(
+            'name' => $name,
+            'mobile' => $mobile,
+            'address' => $address,
+            'branch' => $branchname,
+            'transaction' => $transactionId,
+            'duePayment' => $duePayment * 100,
+        );
+        $cart = $cartArray;
+        $PurchasedItems = Purchased::insert($cartArray);
+        $data = array(
+            'customer' => $customer,
+            'cart' => $cart,
+        );
+
+        if($PurchasedItems = true){
+            return redirect()->action(
+                'TransactionsController@confirm', ['data' => $data]
+            );
+        }else{
+            emotify('error', 'Error updating product. Please try again later');
+            return back();
+        }
     }
 
     /**
@@ -49,9 +118,12 @@ class TransactionsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function confirm(Request $request)
     {
         //
+        $agent = new Agent();
+        $data = $request->input('data');
+        return view('confirm', compact('agent'), ['data' => $data]);
     }
 
     /**

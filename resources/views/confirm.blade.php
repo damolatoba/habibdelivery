@@ -27,18 +27,18 @@
                                             <div class="conprodall">
                                                 <span class="conprod">{{$c['product_name']}}</span><br/>
                                                 <span class="prodqp">Quantity: {{$c['quantity']}}</span>
-                                                <span class="conprice">{{$c['total_cost']}}</span>
+                                                <span class="conprice">&#x20a6;{{number_format($c['total_cost'], 0)}}</span>
                                             </div>
                                         @endforeach
                                     @endif
                                 <hr class="hrline5"/>
                                     <span class="prodqp2">Sub-Total</span>
-                                    <span class="conprice2">300</span><br/>
+                                    <span class="conprice2">&#x20a6;{{number_format($data['customer']['duePayment']/100, 0)}}</span><br/>
                                     <span class="prodqp2">Delivery</span>
-                                    <span class="conprice2">300</span>
+                                    <span class="conprice2">&#x20a6;{{number_format(300, 0)}}</span>
                                 <hr class="hrline5"/>
                                     <span class="prodqp2">Total</span>
-                                    <span class="conprice2">3000</span>
+                                    <span class="conprice2">&#x20a6;{{number_format($data['customer']['duePayment']/100 + 300, 0)}}</span>
                             </div>
                         </div>
                     </div>
@@ -47,19 +47,19 @@
                             <div class="col-md-8 col-md-offset-2">
                                 <input type="hidden" name="email" value="tobadamola@gmail.com"> {{-- required --}}
                                 <input type="hidden" name="orderID" value="{{$data['customer']['transaction']}}">
-                                <input type="hidden" name="amount" value="{{$data['customer']['duePayment']}}"> {{-- required in kobo --}}
-                                <input type="hidden" name="reference" value="{{ Paystack::genTranxRef() }}"> {{-- required --}}
+                                <input type="hidden" name="amount" value="{{$data['customer']['duePayment'] + 30000}}"> {{-- required in kobo --}}
+                                <input type="hidden" name="reference" id="reference" value="{{$data['customer']['reference']}}"> {{-- required --}}
                                 <input type="hidden" name="key" value="{{ config('paystack.secretKey') }}"> {{-- required --}}
-                                {{ csrf_field() }} {{-- works only when using laravel 5.1, 5.2 --}}
 
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}"> {{-- employ this in place of csrf_field only in laravel 5.0 --}}
+                                <input type="image" src='../../../images/paybutton.png' class="probb"/>
 
 
-                                <p>
+                                <!-- <p>
                                 <button class="btn btn-success btn-lg btn-block" type="submit" value="Pay Now!">
                                      <i class="fa fa-plus-circle fa-lg"></i> Pay Now!
                                 </button>
-                                </p>
+                                </p> -->
                             </div>
                             </div>
                     </form>

@@ -18,8 +18,6 @@ class BranchController extends Controller
         //
         $branches = DB::table('branches')->where('is_deleted', 0)->orderBy('branch_name', 'asc')->simplePaginate(10);
 
-        // dd($branches);
-
         return view('/account/branches', ['branches' => $branches]);
     }
 

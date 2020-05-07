@@ -50,12 +50,14 @@
     </div>
     <script>
         var cart = [];
-        console.log(JSON.parse(localStorage.getItem('SelectedBranch')));
         const filledCart = JSON.parse(localStorage.getItem('filledCart'));
             if(filledCart != null){
                 cart = filledCart;
             }
-            var itemsCount = cart.length;
+            var itemsCount = 0;
+            for (i = 0; i < cart.length; ++i) {
+                itemsCount = itemsCount + cart[i].units;
+            }
             var theCount = $(".totProd");
             theCount.text(itemsCount);
 
@@ -81,7 +83,6 @@
                     theCount.text(itemsCount);
                     localStorage.setItem("filledCart", JSON.stringify(cart));
                 }
-                console.log(cart);
             });
 
     </script>

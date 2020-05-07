@@ -17,8 +17,8 @@
 //     return view('welcome', compact('agent'));
 // });
 
-Route::get('/', 'FEBranchController@index');
-Route::get('/branches', 'FEBranchController@branches');
+Route::get('/', 'FEBranchController@branches');
+// Route::get('/branches', 'FEBranchController@branches');
 Route::get('/products', 'FEProductsController@index');
 Route::get('/specials', 'FEProductsController@specials');
 Route::get('/cart', 'FEProductsController@cart');
@@ -27,9 +27,10 @@ Route::post('/transact', 'TransactionsController@start');
 Route::get('/confirm', 'TransactionsController@confirm');
 
 Route::post('/pay', 'PaymentController@redirectToGateway')->name('pay');
-Route::get('/payment/callback', 'PaymentController@handleGatewayCallback');
+Route::get('/thankyou', 'PaymentController@handleGatewayCallback');
 
-Auth::routes();
+// Auth::routes();
+Auth::routes(['register' => false]);
 
 Route::get('/account/dashboard', 'HomeController@index')->middleware('auth.basic');
 Route::get('/account/branches', 'BranchController@index')->middleware('auth.basic');

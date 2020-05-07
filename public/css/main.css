@@ -8,7 +8,16 @@ body {
 
   .start {
     margin: 0;
+    /* background-image: url("../images/Background.png"); */
+    background-color: white;
+    font-family: "Nunito", sans-serif;
+    font-size: 10px;
+    height: 100%;
+  }
+  .start1 {
+    margin: 0;
     background-image: url("../images/Background.png");
+    /* background-color: white; */
     font-family: "Nunito", sans-serif;
     font-size: 10px;
     height: 100%;
@@ -19,9 +28,11 @@ body {
     position: relative;
   }
 
+
+
   .headpart {
     height: 10%;
-    width: 100%;
+    min-width: 100%;
     top: 0px;
   }
 
@@ -31,6 +42,7 @@ body {
     margin-top: 10px;
     overflow: auto;
     margin-bottom: 15%;
+    min-width: 100%;
   }
 
   #footer {
@@ -61,7 +73,7 @@ body {
     position: fixed;
     width: 100%;
     top: 0px;
-    height: 20%;
+    height: 25%;
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Do not repeat the image */
     background-size: cover;
@@ -80,7 +92,7 @@ body {
   }
 
   .cusBody {
-    height: 77%;
+    height: 75%;
     width: 100%;
     top: 15%;
     overflow: auto;
@@ -217,7 +229,7 @@ body {
 
   .cartCont {
     padding: 0 15px;
-    width: 100;
+    min-width: 100%;
   }
 
   .hbprods {
@@ -264,9 +276,10 @@ body {
 
   .itemPrice {
     color: #009900;
-    font-weight: 400;
-    font-size: 18px;
     margin: 0 5px;
+    float: right;
+    font-weight: 400;
+    font-size: 15px;
   }
 
   .itemDesc {
@@ -298,7 +311,7 @@ body {
 
   .delProd {
     color: #ff8000;
-    font-size: 20px;
+    font-size: 15px;
     font-weight: 400;
     text-align: center;
     margin-left: 15px;
@@ -359,6 +372,7 @@ body {
 
   .prodInCart {
     padding:5px 0;
+    min-width: 100%;;
   }
 
   .cont {
@@ -372,7 +386,7 @@ body {
   }
 
   .delbut {
-    font-size: 20px;
+    font-size: 14px;
   }
 
   .eachUnit {
@@ -547,4 +561,26 @@ body {
 
   .itemspad {
     padding: 10px 0 0 0;
+  }
+
+  .thanks {
+    padding: 40px 10px;
+    font-size: 25px;
+    font-weight: 600;
+  }
+
+  .pandu {
+    color: #009900;
+    font-weight: 400;
+    font-size: 12px;
+  }
+
+  .cartprice {
+    float: right;
+  }
+
+  .unitprice {
+    color: #009900;
+    float: right;
+    font-weight: 600;
   }

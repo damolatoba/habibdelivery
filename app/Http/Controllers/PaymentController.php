@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Paystack;
+use App\Transactions;
+use Jenssegers\Agent\Agent;
 
 class PaymentController extends Controller
 {
@@ -17,8 +19,8 @@ class PaymentController extends Controller
      */
     public function redirectToGateway()
     {
-        $response = Paystack::getAuthorizationUrl()->redirectNow();
-        dd($response);
+        return $response = Paystack::getAuthorizationUrl()->redirectNow();
+        // dd($response);
     }
 
     /**
@@ -28,14 +30,16 @@ class PaymentController extends Controller
     public function handleGatewayCallback()
     {
         $paymentDetails = Paystack::getPaymentData();
+        $agent = new Agent();
 
-        // if($data['status'] == 'success'){
-        //     dd($data['status']);
-        //     die;
-        // }
-        dd($paymentDetails);
-        // Now you have the payment details,
-        // you can store the authorization_code in your db to allow for recurrent subscriptions
-        // you can then redirect or do whatever you want
+        if($paymentDetails['status'] == 'true'){
+            $reference = $paymentDetails['data']['reference'];
+
+            Transactions::where('reference', $reference)
+            ->update(['payment_status' => 1, 'total_cost' => $paymentDetails['data']['amount']/100]);
+            // dd($reference);
+            // dd($paymentDetails);
+            return view('thankyou', compact('agent'), ['data' => $paymentDetails['data']]);
+        }
     }
 }

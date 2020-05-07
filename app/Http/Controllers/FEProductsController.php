@@ -36,20 +36,9 @@ class FEProductsController extends Controller
     {
         //
         $agent = new Agent();
-        // $products = DB::table('products')->where('is_deleted', 0)->where('product_type' ,'=', 2)->orderBy('product_prize', 'asc')->simplePaginate(10);
 
         return view('cart', compact('agent'));
     }
-
-    // protected function validator(array $data)
-    // {
-    //     return Validator::make($data, [
-    //         'branch' => ['required', 'string', 'max:255'],
-    //         'location' => ['required', 'string', 'max:255'],
-    //         'manager-name' => ['required', 'string', 'min:8'],
-    //         'manager-mobile' => ['required', 'bigInteger', 'min:8', 'unique:branches'],
-    //     ]);
-    // }
 
     /**
      * Show the form for creating a new resource.
@@ -153,16 +142,6 @@ class FEProductsController extends Controller
             $imageName = time().'.'.$request->product_image->extension();
             $file->move(public_path('uploads/images'), $imageName);
     
-            // $updateProduct = Product::create([
-            //     'product_name' => $request->input('product'),
-            //     'product_type' => $request->input('product_type'),
-            //     'product_size' => $request->input('product_size'),
-            //     'description' => $request->input('description'),
-            //     'product_prize' => $request->input('product_prize'),
-            //     'is_deleted' => 0,
-            //     'product_image' => $imageName,
-                
-            // ]);
             $product = Product::find($productId);
             $product->product_name = $request->input('product');
             $product->product_type = $request->input('product_type');
@@ -180,7 +159,6 @@ class FEProductsController extends Controller
             $product->product_size = $request->input('product_size');
             $product->description = $request->input('description');
             $product->product_prize = $request->input('product_prize');
-            // $product->product_image = $imageName;
 
             $result = $product->save();
         }
@@ -208,7 +186,6 @@ class FEProductsController extends Controller
     {
         //
         $rowid = $request->input('delid');
-        // dd($rowid);
         $product = Product::find($rowid);
         $product->is_deleted = 1;
 
@@ -216,7 +193,5 @@ class FEProductsController extends Controller
 
         emotify('success', 'Product Successfully Deleted.');         
         return back();
-
-        // dd($rowid);
     }
 }

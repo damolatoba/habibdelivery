@@ -1,15 +1,22 @@
+<style>
+    .selectsec {
+        padding: 0 10px;
+    }
+</style>
+
 @extends('layouts.fe')
 
 @section('content')
     <div>
         <a href="/"><img src='../../../images/Logo.png' class="logoimagebranch"/></a>
                 @if (count($branches)>0)
-                    <div>
-                @foreach ($branches as $b)
-                        <div class="brancheslist" data-id='{{$b->id}}' data-name='{{$b->branch_name}}'>
-                            <span class="branchcap">{{$b->branch_name}}</span>
-                        </div>
-                @endforeach
+                    <div class="selectsec">
+                        <select name="selectbranch" id="selectbranch">
+                                <option value="0"> Select Branch </option>
+                            @foreach ($branches as $b)
+                                <option value="{{$b->id}}"> {{$b->branch_name}} </option>
+                            @endforeach
+                        </select>
                     </div>
                 @else
                     <div>
@@ -23,13 +30,11 @@
         </div>  
     </div>
     <script>
-            $(".brancheslist").on("click", function(){
-                var dataId = $(this).attr("data-id");
-                var dataName = $(this).attr("data-name");
-                var SelectedBranch = {id:dataId, name:dataName};
+            $( "#selectbranch" ).change(function() {
+                var branch = $(this).children("option:selected").val();
+                var SelectedBranch = branch;
                 localStorage.setItem("SelectedBranch", JSON.stringify(SelectedBranch));
                 window.location.replace("/products");
-                // console.log()
             });
     </script>
 @endsection

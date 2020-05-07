@@ -75,7 +75,7 @@
     </head>
     <body>
     @if($agent->isMobile())
-        <div class="start">
+        <div class="start1">
             @yield('content')
             @notifyJs
             @include('notify::messages')

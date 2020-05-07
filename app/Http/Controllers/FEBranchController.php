@@ -32,10 +32,6 @@ class FEBranchController extends Controller
         //
         $agent = new Agent();
         $branches = DB::table('branches')->where('is_deleted', 0)->orderBy('branch_name', 'asc')->simplePaginate(5);
-
-        // dd($branches);
-
-        // return view('account.branches', ['branches' => $branches]);
         return view('branches', compact('agent', 'branches'));
     }
 

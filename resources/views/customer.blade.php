@@ -17,6 +17,7 @@
                     <input type="text" name="address" id="cusaddress" placeholder="RECEIVER'S ADDRESS" />
                     <input type="hidden" name="branch" id="branch" />
                     <input type="hidden" name="cart" id="cart" />
+                    <input type="hidden" name="reference" id="reference" />
                     <input type="image" src='../../../images/Probutton.png' class="probb"/>
 
                 </form>
@@ -29,12 +30,12 @@
             var customerAddress = JSON.parse(localStorage.getItem('customerAddress'));
             var filledCart = localStorage.getItem('filledCart');
             var SelectedBranch = localStorage.getItem('SelectedBranch');
-            // console.log(SelectedBranch);
             $('#cusname').val(customerName);
             $('#cusmobile').val(customerMobile);
             $('#cusaddress').val(customerAddress);
             $('#branch').val(SelectedBranch);
             $('#cart').val(filledCart);
+            $('#reference').val(makeid());
 
             $('#cusname').keyup(function() {
                 var cusname = this.value;
@@ -48,6 +49,17 @@
                 var cusaddress = this.value;
                 localStorage.setItem('customerAddress', JSON.stringify(cusaddress));
             });
+
+            function makeid() {
+                var length = 20;
+                var result           = '';
+                var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+                var charactersLength = characters.length;
+                for ( var i = 0; i < length; i++ ) {
+                    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+                }
+                return result;
+            }
         </script>
     </div>
 @endsection

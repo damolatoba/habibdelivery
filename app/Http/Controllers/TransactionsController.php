@@ -17,8 +17,6 @@ class TransactionsController extends Controller
     public function index()
     {
         //
-        // $agent = new Agent();
-        // return view('welcome', compact('agent'));
     }
 
     public function customer()
@@ -33,6 +31,7 @@ class TransactionsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function start(Request $request)
     {
         //
@@ -50,30 +49,26 @@ class TransactionsController extends Controller
         $name = $request->input('name');
         $mobile = $request->input('mobile');
         $address = $request->input('address');
-        $branchinfo = json_decode($request->input('branch'), true);
-        $branch = $branchinfo['id'];
-        $branchname = $branchinfo['name'];
+        $reference = $request->input('reference');
+        $branch = json_decode($request->input('branch'), true);
         $cart = json_decode($request->input('cart'), true);
 
         $createTransaction = Transactions::create([
             'customer_name' => $name,
             'customer_mobile' => $mobile,
             'customer_address' => $address,
+            'reference' => $reference,
             'branch_id' => $branch,
             'total_cost' => 0,
             'payment_status' => 0,
-            
         ]);
         
         $transactionId = $createTransaction->id;
-
-        // dd($insertedId);
 
         $cartArray = [];
         $duePayment = 0;
         foreach($cart as $c){
             $itemId = $c['id'];
-            // $transactionId = $transactionId;
             $key = array_search($itemId, array_column($prodarray, 'id'));
             $duePayment += $prodarray[$key]['prize'] * $c['units'];
             array_push($cartArray, array(
@@ -91,8 +86,9 @@ class TransactionsController extends Controller
             'name' => $name,
             'mobile' => $mobile,
             'address' => $address,
-            'branch' => $branchname,
+            'branch' => $branch,
             'transaction' => $transactionId,
+            'reference' => $reference,
             'duePayment' => $duePayment * 100,
         );
         $cart = $cartArray;
@@ -170,4 +166,5 @@ class TransactionsController extends Controller
     {
         //
     }
+
 }
